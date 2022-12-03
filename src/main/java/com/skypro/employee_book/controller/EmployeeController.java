@@ -3,10 +3,7 @@ package com.skypro.employee_book.controller;
 import com.skypro.employee_book.model.Employee;
 import com.skypro.employee_book.record.EmployeeRequest;
 import com.skypro.employee_book.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,6 +17,7 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public Collection<Employee> getAllEmployees() {
+
         return this.employeeService.getAllEmployees();
     }
 
@@ -31,16 +29,19 @@ public class EmployeeController {
 
     @GetMapping("/employees/salary/sum")
     public int getSalarySum() {
+
         return this.employeeService.getSalarySum();
     }
 
     @GetMapping("/employees/salary/min")
     public List<Employee> getMinSalary() {
+
         return this.employeeService.getMinSalary();
     }
 
     @GetMapping("/employees/salary/max")
     public List<Employee> getMaxSalary() {
+
         return this.employeeService.getMaxSalary();
     }
 

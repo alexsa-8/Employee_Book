@@ -66,4 +66,4 @@ GET http://localhost:8080/department/%7Bid%7D/salary/max
 GET http://localhost:8080/department/%7Bid%7D/salary/min
 
 ### Возвращает сотрудников сгруппированых по отделам
-GET http://localhost:8080/department/employees
+GET http://localhost:8080/department/employees/grouped

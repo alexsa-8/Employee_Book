@@ -16,8 +16,8 @@ public class DepartmentService {
         this.employeeService = employeeService;
     }
 
-    public int getSumSalaryDepartment(int deportment){
-        return getEmployeeDepartment(deportment)
+    public int getSumSalaryDepartment(int department){
+        return getEmployeeDepartment(department)
                 .mapToInt(Employee::getSalary)
                 .sum();
     }
@@ -35,11 +35,10 @@ public class DepartmentService {
                 .min()
                 .orElseThrow(RuntimeException::new);
     }
-    public List<Employee> getEmployeeByDepartment(int deportment){
-        return employeeService
-                .getAllEmployees()
+    public List<Employee> getEmployeeByDepartment(int department){
+        return employeeService.getAllEmployees()
                 .stream()
-                .filter(employee -> employee.getDepartment()==deportment)
+                .filter(employee -> employee.getDepartment()==department)
                 .collect(Collectors.toList());
     }
     public Map<Integer,List<Employee>> getEmployeesGroupedByDepartment(){
@@ -52,4 +51,5 @@ public class DepartmentService {
                 .stream()
                 .filter(employee -> employee.getDepartment()==department);
     }
+
 }
