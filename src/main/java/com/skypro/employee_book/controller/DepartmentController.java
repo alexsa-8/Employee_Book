@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.Map;
+
 @RestController
 @RequestMapping("department")
 public class DepartmentController {
@@ -19,8 +19,9 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @GetMapping("/employees")
-    public List<Employee>getEmployeeByDepartment(int id){
+    @GetMapping("/{id}/employees")
+    public List<Employee> getEmployeeByDepartment(@PathVariable("id") int id){
+
         return this.departmentService.getEmployeeByDepartment(id);
     }
     @GetMapping("/{id}/salary/sum")
@@ -38,7 +39,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/employees/grouped")
-    public Map<Integer, List<Employee>>getEmployeesGroupedByDepartment(){
+    public Map<Integer, List<Employee>> getEmployeesGroupedByDepartment(){
         return this.departmentService.getEmployeesGroupedByDepartment();
     }
 }

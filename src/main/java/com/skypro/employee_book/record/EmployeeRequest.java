@@ -6,8 +6,7 @@ public class EmployeeRequest {
     private int department;
     private int salary;
 
-    public EmployeeRequest(String firstName, String lastName,
-                           int department, int salary) {
+    public EmployeeRequest(String firstName, String lastName, int department, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;

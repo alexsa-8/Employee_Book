@@ -1,6 +1,6 @@
 package com.skypro.employee_book;
 
-import com.skypro.employee_book.exception.Exception;
+import com.skypro.employee_book.exception.NotAllDataHasBeenEntered;
 import com.skypro.employee_book.model.Employee;
 import com.skypro.employee_book.record.EmployeeRequest;
 import com.skypro.employee_book.service.EmployeeService;
@@ -65,7 +65,7 @@ public class EmployeeServiceTest {
         int averageSalary= (int) employees.stream()
                 .mapToInt(Employee::getSalary)
                 .average()
-                .orElseThrow(Exception::new);
+                .orElseThrow(NotAllDataHasBeenEntered::new);
         List<Employee> list=employeeService.getAllEmployees()
                 .stream()
                 .filter(employee -> employee.getSalary()>averageSalary)
