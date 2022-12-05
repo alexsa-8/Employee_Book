@@ -14,11 +14,12 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EmployeeServiceTest {
+public class EmployeServiceTest {
     private EmployeeService employeeService;
     private List<Employee> employees;
 
-    public EmployeeServiceTest(List<Employee> employees) {
+    public void EmployeServiceTest(List<Employee> employees) {
+
         this.employees = employees;
     }
 

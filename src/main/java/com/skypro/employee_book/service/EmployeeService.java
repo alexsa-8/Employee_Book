@@ -30,16 +30,14 @@ public class EmployeeService {
     }
 
     public int getSalarySum() {
-        return employees
-                .values()
+        return employees.values()
                 .stream()
                 .mapToInt(Employee::getSalary)
                 .sum();
     }
 
-    public List<Employee> getMinSalary() {
-        var employeeMinSalary = employees
-                .values()
+    public int getMinSalary() {
+        var employeeMinSalary = employees.values()
                 .stream()
                 .mapToInt(Employee::getSalary)
                 .min()
@@ -50,10 +48,10 @@ public class EmployeeService {
                 list.add(employee);
             }
         }
-        return list;
+        return employeeMinSalary;
     }
 
-    public List<Employee> getMaxSalary() {
+    public int getMaxSalary() {
         var employeeMaxSalary = employees.values()
                 .stream()
                 .mapToInt(Employee::getSalary)
@@ -65,17 +63,18 @@ public class EmployeeService {
                 list.add(employee);
             }
         }
-        return list;
+        return employeeMaxSalary;
     }
 
     public List<Employee> getEmployeesAboveAverageSalary() {
-        var averageSalary = employees.values()
+        int averageSalary = (int) employees.values()
                 .stream()
                 .mapToInt(Employee::getSalary)
                 .average()
                 .orElseThrow();
         return employees.values()
                 .stream()
-                .filter(employee -> averageSalary < employee.getSalary()).collect(Collectors.toList());
+                .filter(employee -> averageSalary < employee.getSalary())
+                .collect(Collectors.toList());
     }
 }

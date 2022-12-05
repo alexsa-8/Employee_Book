@@ -17,7 +17,7 @@ Content-Type: application/json
 {
   "firstName": "Пётр",
   "lastName": "Петров",
-  "department": 2,
+  "department": 1,
   "salary": 12000
 }
 ###Добавление сотрудника 3
@@ -27,7 +27,7 @@ Content-Type: application/json
 {
   "firstName": "Сидор",
   "lastName": "Сидоров",
-  "department": 1,
+  "department": 2,
   "salary": 14000
 }
 ###Добавление сотрудника 4
