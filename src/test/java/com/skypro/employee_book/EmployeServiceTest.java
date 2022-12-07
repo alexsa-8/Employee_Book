@@ -1,6 +1,5 @@
 package com.skypro.employee_book;
 
-import com.skypro.employee_book.exception.NotAllDataHasBeenEntered;
 import com.skypro.employee_book.model.Employee;
 import com.skypro.employee_book.record.EmployeeRequest;
 import com.skypro.employee_book.service.EmployeeService;
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployeServiceTest {
     private EmployeeService employeeService;
@@ -21,6 +20,14 @@ public class EmployeServiceTest {
     public void EmployeServiceTest(List<Employee> employees) {
 
         this.employees = employees;
+    }
+
+    public EmployeeService getEmployeeService() {
+        return employeeService;
+    }
+
+    public List<Employee> getEmployeeHashMap() {
+        return employees;
     }
 
     @BeforeEach
@@ -38,6 +45,7 @@ public class EmployeServiceTest {
                 throw new RuntimeException(e);
             }
         });
+
     }
     @Test
     public void addEmployee(){
@@ -70,10 +78,7 @@ public class EmployeServiceTest {
     }
     @Test
     public void getEmployeesAboveAverageSalary(){
-        int averageSalary= (int) employees.stream()
-                .mapToInt(Employee::getSalary)
-                .average()
-                .orElseThrow(NotAllDataHasBeenEntered::new);
+        int averageSalary= employeeService.getSalarySum()/employeeService.getAllEmployees().size();
         List<Employee> list=employeeService.getAllEmployees()
                 .stream()
                 .filter(employee -> employee.getSalary()>averageSalary)
